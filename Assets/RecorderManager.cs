@@ -135,11 +135,11 @@ public class RecorderManager : MonoBehaviour
         _recordedFilePath = SmileSoftScreenRecordController.instance.StopRecording();
         Debug.Log("File Path: " + _recordedFilePath);
 
-        /*if (SmileSoftScreenRecordController.instance.IsIosPlatform())
+        if (SmileSoftScreenRecordController.instance.IsIosPlatform())
         {
             PreviewVideo();
         }
-        if (SmileSoftScreenRecordController.instance.IsAndroidPlatform())
+        /*if (SmileSoftScreenRecordController.instance.IsAndroidPlatform())
         {
             ShowAndroidVideoCompletatoonDialog();
         }*/
