@@ -20,7 +20,7 @@ public class RecorderManager : MonoBehaviour
     [SerializeField] private int bitrate;
     [SerializeField] private int fps;
     [SerializeField] private SmileSoftScreenRecordController.VideoEncoder videoEncoder = SmileSoftScreenRecordController.VideoEncoder.H264;
-    [SerializeField] private Text savedPathText;
+    [SerializeField] private Text logText;
     private string _recordedFilePath;
     #endregion
 
@@ -57,7 +57,7 @@ public class RecorderManager : MonoBehaviour
     private void SetFileName()
     {
         System.DateTime now = System.DateTime.Now;
-        string date = now.ToShortDateString().Replace('/', '_')
+        string date = now.ToShortDateString().Replace('/', '_') + "_"
                     + now.ToLongTimeString().Replace(':', '_');
         string fileName = "Record_" + date;
 
@@ -78,13 +78,13 @@ public class RecorderManager : MonoBehaviour
         {
             //previewButton.interactable = true;
             //ShareButton.interactable = true;
-            savedPathText.text = "Video saved successfully at : " + _recordedFilePath;
+            logText.text = "Video saved successfully at : " + _recordedFilePath;
         }
         else
         {
             //previewButton.interactable = false;
             //ShareButton.interactable = false;
-            savedPathText.text = "Error occured. Can not record video";
+            logText.text = "Error occured. Can not record video";
         }
 
     }

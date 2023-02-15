@@ -17,8 +17,6 @@ public class SmileSoftScreenRecordController : MonoBehaviour
 	{
 		if (instance == null)
 			instance = this;
-
-
 	
 		Setup();
 	}
