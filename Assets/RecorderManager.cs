@@ -20,7 +20,6 @@ public class RecorderManager : MonoBehaviour
     [SerializeField] private int bitrate;
     [SerializeField] private int fps;
     [SerializeField] private SmileSoftScreenRecordController.VideoEncoder videoEncoder = SmileSoftScreenRecordController.VideoEncoder.H264;
-    [SerializeField] private Text logText;
     private string _recordedFilePath;
     #endregion
 
@@ -44,12 +43,16 @@ public class RecorderManager : MonoBehaviour
         //SmileSoftScreenRecordController.instance.SetVideoStoringDestination(Application.persistentDataPath);
         //Do not want to show stored videos in gallery ,then uncomment following line.
         //SmileSoftScreenRecordController.instance.SetGalleryAddingCapabilities(false);
+        CanvasScaler cs = GetComponent<CanvasScaler>();
+        float screenWidth = cs.referenceResolution.x;
+        float screenHeight = cs.referenceResolution.y;
 
         SmileSoftScreenRecordController.instance.SetStoredFolderName(folderName); // only Android
         SmileSoftScreenRecordController.instance.SetBitRate(bitrate); // only Android
         SmileSoftScreenRecordController.instance.SetFPS(fps); // only Android
         SmileSoftScreenRecordController.instance.SetVideoEncoder((int)videoEncoder); // only Android
-        SmileSoftScreenRecordController.instance.SetVideoSize((int)(Screen.width), (int)(Screen.height)); // only Android
+        //SmileSoftScreenRecordController.instance.SetVideoSize((int)(Screen.width), (int)(Screen.height)); // only Android
+        SmileSoftScreenRecordController.instance.SetVideoSize((int)(screenWidth), (int)(screenHeight)); // only Android
 
         SmileSoftScreenRecordController.instance.SetAudioCapabilities(isAudioRecording);  // both Android & iOS
     }
@@ -78,13 +81,13 @@ public class RecorderManager : MonoBehaviour
         {
             //previewButton.interactable = true;
             //ShareButton.interactable = true;
-            logText.text = "Video saved successfully at : " + _recordedFilePath;
+            //logText.text = "Video saved successfully at : " + _recordedFilePath;
         }
         else
         {
             //previewButton.interactable = false;
             //ShareButton.interactable = false;
-            logText.text = "Error occured. Can not record video";
+            //logText.text = "Error occured. Can not record video";
         }
 
     }
